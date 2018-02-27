@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from ..appointments1.models import User, UserManager
-from ..appointments2.models import Task
+from .models import Task
 import datetime
 from time import strftime
 from django.contrib import messages

@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from decimal import Decimal
-from apps.amadon_store.models import Product
+from .models import Product
 
 secret_key = "checkout"
 
