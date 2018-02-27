@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mylibrary3/css/style.css' %}" media="screen" title="no title">
+    <title>Add to Reading List</title>
+  </head>
+
+  <body>
+    <fieldset>
+
+      <div class = "header">
+        <p><a href={% url 'mylibrary2:index' %}>Home</a><a href={% url 'mylibrary1:logout' %}>Logout</a></p>
+      </div>
+
+      <h1>Add a book to your reading list</h1>
+      <h3>Select from the list of books below, or add your own.</h3>
+
+      <form class = "add_book" action="{% url 'mylibrary3:readinglist' %}" method="POST">
+        {% csrf_token %}
+
+        <div class = "add_book">
+          <div class = "one_line">
+            <label for="book_title"><h3>Book Title:</h3></label>
+            <input type='text' name='book_title'>
+          </div>
+          <div class = "one_line">
+            <label for="author"><h3>Author:</h3></label>
+            <input type='text' name='author'>
+          </div>
+          <div class = "one_line">
+          <button class="submit" value="Add">Add Book</button>
+          </form>
+          </div>
+        </div>
+
+        <div class = "wrapper">
+
+          <h2>Books:</h2>
+          <div class="column1">
+
+            <div class="scrollbar">
+              {% for book in all_books %}
+                <h3><a href="{% url 'mylibrary3:readinglist2' book_id=book.id %}">{{ book.title }}</a></h3>
+              {% endfor %}
+            </div><!-- scrollbar end div -->
+            <br>
+          </div><!-- column1 end div -->
+
+          <div class="column2">
+            <!-- <img src="{% static 'mylibrary3/images/books1_lavender.jpg' %}" width="80%" alt="image"> -->
+            <img src="{% static 'mylibrary3/images/post_its_lavender.jpg' %}" width="90%" align="right" alt="image">
+
+          </div>
+
+        </div><!-- wrapper end div -->
+
+    </fieldset>
+  </body>
+</html>

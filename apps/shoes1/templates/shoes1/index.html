@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login and Registration</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shoes1/css/style.css' %}" media="screen" title="no title">
+
+  </head>
+  <body>
+
+    <fieldset>
+      <h1>Welcome</h1>
+      <div class="registration">
+
+        <form class="" action="{% url 'shoes1:register' %}" method="POST">
+          {% csrf_token %}
+
+          <h2>Registration</h2>
+          <h3>First Name: <input type="text" name="first_name" value=""></h3>
+          <h3>Last Name: <input type="text" name="last_name" value=""></h3>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <!-- type="password" hides the password -->
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <h3>Confirm Password: <input type="password" name="confirmPW" value=""></h3>
+          <input type="Submit" value="Register">
+          <br>
+          <br>
+        </form>
+      </div><!-- end of registration -->
+
+      <div class="error_messages">
+<!-- displaying error messages -->
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="login">
+
+        <form class="" action="{% url 'shoes1:login' %}" method="POST">
+          {% csrf_token %}
+
+          <h2>Log in</h2>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <input type="Submit" value="Login">
+          <br>
+          <br>
+        </form>
+      </div>
+
+      <h4>Visiting? You can create your own login, or sign in as hgranger@hogwarts.com, password: studymore</h4>
+      <br>
+      <a href="{% url 'app1:index' %}">Back to Landing Page</a>
+
+    </fieldset><!-- wrapper end div-->
+  </body>
+</html>

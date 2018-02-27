@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mylibrary2/css/style.css' %}" media="screen" title="no title">
+    <title>Home page</title>
+  </head>
+  <body>
+
+    <div class="books_header">
+        <p><a href={% url 'mylibrary3:bookshelf_index' %}><u style="text-decoration-color:green;"><span style="color:green">My Bookshelf</span></u></a>
+          <a href={% url 'mylibrary3:readinglist_index' %}><u style="text-decoration-color:green;"><span style="color:green">My Reading List</span></u></a>
+          <a href={% url 'mylibrary2:add_book' %}>Add Book and Review</a>
+          <a href="{% url 'app1:index' %}"><u style="text-decoration-color:purple;"><span style="color:purple">Back to Landing Page</u></a>
+          <a href={% url 'mylibrary1:logout' %}><u style="text-decoration-color:red;"><span style="color:red">Logout</span></u></a></p>
+    </div>
+
+    <h1><img src="{% static 'mylibrary2/images/yellowstar_beige.jpg' %}" width="25" alt="image"> Welcome, {{ request.session.user_alias }}! <img src="{% static 'mylibrary2/images/yellowstar_beige.jpg' %}" width="25" alt="image"></h1>
+
+    <div class="column1">
+
+      <h2>Recent Book Reviews:</h2>
+      <br>
+
+        {% for review in reviews %}
+          <h4><a href="{% url 'mylibrary2:add_review' id=review.book_link.id %}">{{ review.book_link.title }}</a> by {{ review.book_link.author }}</h4>
+
+          {% if review.rating == 0 %}
+            <p>Rating: <img src="{% static 'mylibrary2/images/0.jpg' %}" width="15%" alt="image"> stars</p>
+          {% elif review.rating == 1 %}
+            <p>Rating: <img src="{% static 'mylibrary2/images/1.jpg' %}" width="15%" alt="image"> stars</p>
+          {% elif review.rating == 2 %}
+            <p>Rating: <img src="{% static 'mylibrary2/images/2.jpg' %}" width="15%" alt="image"> stars</p>
+          {% elif review.rating == 3 %}
+            <p>Rating: <img src="{% static 'mylibrary2/images/3.jpg' %}" width="15%" alt="image"> stars</p>
+          {% elif review.rating == 4 %}
+            <p>Rating: <img src="{% static 'mylibrary2/images/4.jpg' %}" width="15%" alt="image"> stars</P>
+          {% else %} <!-- rating is 5 -->
+            <p>Rating: <img src="{% static 'mylibrary2/images/5.jpg' %}" width="15%" alt="image"> stars</p>
+          {% endif %}
+
+
+          <p><a href="{% url 'mylibrary2:users' user_id=review.user_link.id %}">{{ review.user_link.alias }}</a>says: {{ review.review }}</p>
+          <p>Posted on {{ review.created_at.date }}</p>
+          <div class="asterisk">
+            <p>* * * * *</p>
+          </div>
+        {% endfor %}
+    </div><!-- column1 end div -->
+
+
+    <div class="column2">
+
+      <div class = "booklist">
+        <h2>Other Books with Reviews:</h2>
+        <div class="scrollbar">
+          {% for book in books_reviewed_notlast3 %}
+            <h4><a href="{% url 'mylibrary2:add_review' id=book.id %}">{{ book.title }}</a>, by {{ book.author }}</h4>
+          {% endfor %}
+        </div><!-- scrollbar end div -->
+      </div><!-- booklist end div -->
+
+      <div class = "booklist">
+        <h2>Books Not Yet Reviewed:</h2>
+        <div class="scrollbar">
+          {% for book in books_not_reviewed %}
+          <h4><a href="{% url 'mylibrary2:add_review' id=book.id %}">{{ book.title }}</a>, by {{ book.author }}</h4>
+          {% endfor %}
+        </div><!-- scrollbar end div -->
+      </div><!-- booklist end div -->
+
+    </div><!-- column2 end div -->
+
+  </body>
+</html>

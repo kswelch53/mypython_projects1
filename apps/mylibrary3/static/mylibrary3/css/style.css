@@ -1,0 +1,94 @@
+a{
+  margin-right: 20px;
+}
+
+.add_book{
+  display: block;
+  width: 95%;
+}
+
+body{
+  font-family: sans-serif;
+  background-color: beige;
+}
+
+.one_line button{
+  vertical-align: top;
+  margin-left: 10px;
+  margin-top: 70%;
+}
+
+.column1{
+  display: inline-block;
+  margin-left: 10px;
+  width: 45%;
+}
+
+.column2{
+  display: inline-block;
+  width: 52%;
+  vertical-align: top;
+}
+
+.column2 img{
+  margin-left: 15%;
+}
+
+fieldset{
+  width: 50%;
+  background-color: lavender;
+  margin-left: 10px;
+}
+
+h3, h4{
+  font-weight: lighter;
+}
+
+.header{
+  display: block;
+  width: 95%;
+  margin-left: 10px;
+}
+
+legend{
+  font-size: 20pt;
+  font-weight: bold;
+  font-style: oblique;
+  text-align: center;
+}
+
+.one_line{
+  display: inline-block;
+  /* width: 30%; */
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.one_line a{
+  margin-left: 30%;
+}
+
+p{
+  font-size: 14pt;
+}
+
+.scrollbar{
+  width: 98%;
+  height: 400px;
+  overflow: scroll;
+  background-color: beige;
+  /* border-radius: 10px 10px 10px 10px; */
+  border: 1px solid purple;
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+.scrollbar a{
+  margin-left: 15px;
+  /* font-size: 9pt; */
+  /* color: #9eb8e2; */
+}
+
+.wrapper{
+  display: block;
+}

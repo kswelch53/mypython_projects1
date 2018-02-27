@@ -1,0 +1,63 @@
+a{
+  color: blue;
+  margin-right: 5%;
+}
+
+body{
+  background-color: beige;
+  font-family: sans-serif;
+}
+
+.button{
+  display: inline-block;
+}
+
+.column{
+  display: inline-block;
+  background-color: lavender;
+  width: 35%;
+  height: 650px;
+  overflow: scroll;
+  border: 2px solid black;
+  margin-right: 20px;
+  padding: 0px 10px 0px 10px;
+  vertical-align: top;
+}
+
+h4{
+  font-weight: lighter;
+}
+
+.header{
+  display: block;
+}
+
+.miniwrap{
+  display: block;
+  width: 50%;
+  height: auto;
+  background-color: lavender;
+  border: 2px solid red;
+  padding: 20px 10px 20px 20px;
+}
+
+.one_line{
+  display: inline-block;
+  margin-right: 30%;
+}
+
+p{
+  display: inline;
+  font-weight: bold;
+  /* color: red; */
+  /* font-family: sans-serif; */
+}
+
+.quotebox{
+  display: inline-block;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+}

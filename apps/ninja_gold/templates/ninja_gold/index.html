@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ninja_gold/css/style.css' %}" media="screen" title="no title">
+    <title>Pirate-Ninja Gold</title>
+
+  </head>
+  <body>
+
+    <fieldset>
+      <legend><span style="color:red">Pirate-</span><span style="color:green">Ninja </span><span style="color:#c4a403">Gold</span></legend>
+
+      <div class = "countinggold">
+        <form action = "{% url 'ninja_gold:clear' %}" method = "POST">
+          {% csrf_token %}
+          <h2>Your Gold: <span style="color:red">{{ request.session.goldcounter }}</span></h2>
+          <input type = "submit" class = "button" value = "Clear session">
+        </form>
+      </div>
+
+      <div class = "goldplaces">
+        <h1>Farm</h1>
+        <h3>(earns 10-20 golds)</h3>
+        <form action="{% url 'ninja_gold:process_money' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="place" value="farm">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+
+      <div class = "goldplaces">
+        <h1>Cave</h1>
+        <h3>(earns 5-20 golds)</h3>
+        <form action="{% url 'ninja_gold:process_money' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="place" value="cave">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+
+      <div class = "goldplaces">
+        <h1>House</h1>
+        <h3>(earns 2-5 golds)</h3>
+        <form action="{% url 'ninja_gold:process_money' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="place" value="house">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+
+      <div class = "goldplaces">
+        <h1>Casino</h1>
+        <h3>(earns/takes 0-50 golds)</h3>
+        <form action="{% url 'ninja_gold:process_money' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="place" value="casino">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+
+    </fieldset> <!--wrapper end div-->
+
+    <div class = "footer">
+      <div class = "activities">
+        <h5>Activity:</h5>
+       <!-- <p>{{ request.session.goldcounter }}</p> -->
+       <!-- This loop is retrieving tuples from an indexed list -->
+       {% for activity in request.session.updatelist %}
+        <p><span style="color:{{ request.session.color }}"> You {{ activity.0 }} {{ activity.1 }} gold at the {{ activity.2 }}</span></p>
+       {% endfor %}
+      </div>
+
+      <div class = "image">
+        <p><a href="{% url 'app1:index' %}">Arrr! Back to Landing Page</a></p>
+        <img src="{% static 'ninja_gold/images/pirategold_beige.jpg' %}" width="55%" alt="image">
+        <img src="{% static 'ninja_gold/images/ninjagirl1_beige.jpg' %}" width="37%" alt="image">
+      </div>
+
+    </div><!-- footer end div -->
+
+  </body>
+</html>

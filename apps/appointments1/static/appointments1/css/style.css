@@ -1,0 +1,38 @@
+body{
+  background: black;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+fieldset{
+  background-color: salmon;
+  width: 90%;
+  margin: 20px 5% 10px 5%;
+}
+
+h1{
+  font-style: italic;
+  font-weight: lighter;
+  color: purple;
+}
+
+h3{
+  color: purple;
+}
+
+.error_messages li{
+  color: red;
+}
+
+input{
+  background-color: silver;
+  border-radius: 10px;
+}
+
+.login{
+  display: block;
+}
+
+.registration{
+  display: block;
+}

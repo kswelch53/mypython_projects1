@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Wall Login and Registration</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'wall_one/css/style.css' %}" media="screen" title="no title">
+
+  </head>
+  <body>
+
+    <fieldset>
+      <h1>Welcome to the Message Wall</h1>
+      <div class="registration">
+
+        <form class="" action="{% url 'wall_one:register' %}" method="POST">
+          {% csrf_token %}
+
+          <h2>Registration</h2>
+          <h3>First Name: <input type="text" name="first_name" value=""></h3>
+          <h3>Last Name: <input type="text" name="last_name" value=""></h3>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <!-- type="password" hides the password -->
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <h3>Confirm Password: <input type="password" name="confirmPW" value=""></h3>
+          <!-- type="date" generates a datepicker -->
+          <h3>Date of Birth: <input type="date" name="dob" value=""></h3>
+          <input type="Submit" value="Register">
+          <br>
+          <br>
+        </form>
+      </div><!-- end of registration -->
+
+      <div class="error_messages">
+<!-- displaying error messages -->
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="login">
+
+        <form class="" action="{% url 'wall_one:login' %}" method="POST">
+          {% csrf_token %}
+
+          <h2>Log in</h2>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <input type="Submit" value="Login">
+          <br>
+          <br>
+        </form>
+      </div>
+      <h4>Visiting? You can create your own login, or sign in as hgranger@hogwarts.com, password: studymore</h4>
+    </fieldset><!-- wrapper end div-->
+    <br>
+    <a href="{% url 'app1:index' %}"><u style="text-decoration-color:white;"><span style="color:white">Back to Landing Page</u></a>
+
+  </body>
+</html>

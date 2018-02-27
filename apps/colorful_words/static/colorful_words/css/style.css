@@ -1,0 +1,38 @@
+body{
+  font-family: sans-serif;
+}
+
+.column{
+  display: inline-block;
+  width: 47%;
+  height: inherit;
+  margin-left: 9px;
+  margin-right: 10px;
+  padding-bottom: 20px;
+  vertical-align: top;
+}
+
+.color_column{
+  display: inline-block;
+}
+
+h1{
+  text-align: center;
+}
+
+.header{
+  display: block;
+  text-align: center;
+}
+
+.hed{
+  display: inline-block;
+}
+
+.wrapper{
+  width: 60%;
+  height: auto;
+  padding: 0px 10px 0px 20px;
+  border: 2px solid brown;
+  background-color: beige;
+}

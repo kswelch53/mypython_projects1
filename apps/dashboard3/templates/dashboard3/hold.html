@@ -1,0 +1,28 @@
+Note: I removed this method from views.py after putting the code in profiles method
+
+# route for users' posts
+def user_posts(request, user_id):
+    print("This is the user_posts method in dashboard3 views.py")
+
+# creates new message object
+# returns all message objects for display on profile page
+    if request.method == 'POST':
+        print("POST", user_id)#message receiver's id
+
+        # get message from request.POST on profile.html
+        this_message = request.POST['message']
+        print("Message is:", this_message)
+
+        # get sender (user in session) by id
+        this_sender = User.objects.get(id=request.session['user_id'])
+        print("Sender is:", this_sender.first_name)
+
+        # gets recipient by id
+        this_receiver = User.objects.get(id=user_id)
+        print("Recipient is:", this_receiver.first_name)
+
+        # saves new message
+        save_message = Message.objects.create(post=this_message, send_posts=this_sender, get_posts=this_receiver)
+
+        return redirect('dashboard3:profile', id=user_id)
+    return redirect('dashboard3:profile', id=user_id)

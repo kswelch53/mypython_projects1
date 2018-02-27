@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'time_display/css/style.css' %}" media="screen">
+    <title>Time Display</title>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>DATE AND TIME DISPLAY</legend>
+
+      <div class="wrapper">
+
+        <div class="column">
+          <img src="{% static 'time_display/images/calendar_beige.jpg' %}" width="100%%" alt="image">
+        </div>
+
+        <div class="column2">
+
+          <div class="time_display">
+            <h4>The current date and time is:</h4>
+            <h1>{{ time }}</h1>
+          </div>
+
+          <div class="time_select">
+            <h4>Select your time zone:</h4>
+            <form action = "{% url 'time_display:select_timezone' %}" method = "POST">
+              {% csrf_token %}
+
+              <input type="hidden" name="time" value="">
+              <select name="time_zone">
+                <option value="0" {{ select.0 }}>Choose one!</option>
+                <option value="1" {{ select.1 }}>Hawaii time</option>
+                <option value="2" {{ select.2 }}>Alaska time</option>
+                <option value="3" {{ select.3 }}>Pacific time</option>
+                <option value="4" {{ select.4 }}>Mountain time</option>
+                <option value="5" {{ select.5 }}>Central time</option>
+                <option value="6" {{ select.6 }}>Eastern time</option>
+                <input type="submit" value="Submit">
+              </select>
+            </form>
+          </div><!-- time_select end div -->
+
+        </div><!-- column2 end div -->
+
+        <div class="column">
+          <img src="{% static 'time_display/images/clock3_beige.jpg' %}" width="100%%" alt="image">
+        </div>
+
+      </div><!-- wrapper end div -->
+
+    </fieldset>
+    <p><a href="{% url 'app1:index' %}"><span style="color:purple">Back to Landing Page</span></a></p>
+  </body>
+</html>

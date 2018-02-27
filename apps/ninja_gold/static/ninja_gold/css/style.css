@@ -1,0 +1,106 @@
+.activities{
+  display: inline-block;
+  width: 35%;
+  height: 500px;
+  overflow: scroll;
+  border: 2px solid gold;
+  padding: 0px 10px 0px 10px;
+  margin-right: 5%;
+}
+
+.activities p{
+  display: block;
+  background-color: lightblue;
+  font-size: 12pt;
+}
+
+body{
+  background-color: beige;
+  font-family: sans-serif;
+}
+
+.button{
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
+  margin: 0px 0px 0px 85%;
+}
+
+.countinggold{
+  display: block;
+  border-top: 0px;
+}
+
+.countinggold h2{
+  display: inline-block;
+  width: 200px;
+  font-size: 20pt;
+  color: green;
+  margin: 10px 0px 0px 5px;
+}
+
+.form{
+  display: inline-block;
+}
+
+.goldplaces{
+  display: inline-block;
+  width: 24%;
+  height: 150px;
+  background-color: gold;
+  text-align: center;
+  vertical-align: top;
+  margin: 12px 0px 15px 5px
+}
+
+h1{
+  font-size: 20pt;
+}
+
+h3{
+  font-size: 12pt;
+}
+
+h4{
+  font-size: 10pt;
+}
+
+h5{
+  text-decoration: underline;
+  color: green;
+}
+
+fieldset{
+  display: inline-block;
+  width: 95%;
+  height: auto;
+  background-color: lightblue;
+  border: 0px 5px 0px 5px;
+  border-color: lightblue;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.footer{
+  display: block;
+  width: 100%;
+  vertical-align: top;
+}
+
+.image{
+  display: inline-block;
+  vertical-align: top;
+  width: 55%;
+}
+
+legend{
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 18pt;
+}
+
+p a{
+  color: purple;
+  margin-left: 55%;
+}

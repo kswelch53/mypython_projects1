@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'appointments2/css/style.css' %}" media="screen" title="no title">
+    <title>Appointments</title>
+  </head>
+
+  <body>
+    <fieldset>
+
+    <div class = "header">
+        <h1 class="one_line">Welcome, {{ request.session.user_alias }}!</h1><a href="{% url 'app1:index' %}">Back to Landing Page</u></a><a href={% url 'appointments1:logout' %}>Logout</a>
+    </div>
+
+    <div class = "task_table">
+      <h3>Here are your appointments for today, {{ month_day }}, {{ year }}:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tasks</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for task in todays_tasks %}
+            <tr>
+              <td>{{ task.task_name }}</td>
+              <td>{{ task.time }}</td>
+              <td>{{ task.status }}</td>
+              <td><a href="{% url 'appointments2:edit' task_id=task.id %}">Edit<a><a href="{% url 'appointments2:delete' task_id=task.id %}">Delete<a></td>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div><!-- appt_table1 end div -->
+
+
+    <div class = "task_table">
+      <h3>Your other appointments:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tasks</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for other_task in other_tasks %}
+            <tr>
+              <td>{{ other_task.task_name }}</td>
+              <td>{{ other_task.date }}</td>
+              <td>{{ other_task.time }}</td>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div><!-- appt_table2 end div -->
+
+    <div class="error_messages">
+<!-- displaying error messages -->
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+
+    <br>
+    <div class = "task_div">
+      <h3>Add Appointment</h3>
+      <form class="" action="{% url 'appointments2:add_task' %}" method="POST">
+        {% csrf_token %}
+
+      <h3>Date: <input type="date" name="task_date" value=""></h3>
+      <h3>Time: <input type="time" name="task_time" value="16:30"></h3>
+      <h3>Tasks: <input type="text" name="task_name" value=""></h3>
+
+      <input type="Submit" value="Add">
+
+    </fieldset>
+  </body>
+</html>

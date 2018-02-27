@@ -1,0 +1,57 @@
+body{
+  background-color: beige;
+  font-family: sans-serif;
+}
+
+.column{
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  margin-left: 20px;
+}
+
+.column2{
+  display: inline-block;
+  width: 52%;
+  margin-left: 20px;
+}
+
+fieldset{
+  width: 70%;
+  margin-left: 13%;
+}
+
+h4{
+  font-size: 15pt;
+}
+
+legend{
+  margin-left: 40%;
+  margin-bottom: 10px;
+}
+
+p a{
+  margin-left: 13%;
+}
+
+.time_display{
+  display: inline-block;
+  width: 85%;
+  height: auto;
+  background-color: #81d391;
+  border: 5px solid #46a058;
+  border-radius: 10px 10px 10px 10px;
+  padding-left: 20px;
+  margin-left: 5%;
+}
+
+.time_select{
+  display: block;
+  width: 60%;
+  margin-left: 32%;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+}

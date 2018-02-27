@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+
+    <!-- <meta charset="utf-8"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Delete page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard2/css/style.css' %}" media="screen" title="no title">
+  </head>
+
+  <body>
+
+    <div class="miniwrap">
+      <h2>Are you sure you want to delete this user?</h2>
+      <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
+      <h4>ID: {{ user.id }}</h4>
+
+<!-- No button routes back to index page -->
+<!-- Yes button routes to remove function in views.py -->
+
+<!-- Note: It's illegal to wrap a button in an anchor tag (above), as it doesn't work in all browsers -->
+<!-- So these are anchor tags that have been styled as buttons in css -->
+    <div class="buttonrow">
+      <p><a href = '{% url 'dashboard2:index' %}' class="buttonB">No, I don't want to delete this user</a></p>
+      <p><a href = '{% url 'dashboard2:remove_user' user_id=user.id %}' class="buttonC">Yes! I want to delete this user</a></p>
+    </div>
+<!-- Routes back to manage_users.html, regardless of whether a user is deleted -->
+
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login and Registration</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mylibrary1/css/style.css' %}" media="screen" title="no title">
+
+  </head>
+  <body>
+    <!-- <h1>This is index.html in apps_one</h1> -->
+    <fieldset>
+    <!-- <div class="wrapper"> -->
+      <div class="registration">
+        <!-- <form action="/register" method="POST" id="register"> -->
+
+          <!-- This is the python syntax used with named routes: -->
+          <!-- register is a named route in apps-level urls.py -->
+        <form class="" action="{% url 'mylibrary1:register' %}" method="POST">
+          {% csrf_token %}
+
+          <h1>Registration</h1>
+          <h3>Name: <input type="text" name="name" value=""></h3>
+          <h3>Alias: <input type="text" name="alias" value=""></h3>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <!-- type="password" hides the password -->
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <h3>Confirm Password: <input type="password" name="confirmPW" value=""></h3>
+
+          <input type="Submit" value="Register">
+          <br>
+          <br>
+        </form>
+      </div><!-- end of registration -->
+    </fieldset>
+
+    <fieldset>
+
+      <div class="error_messages">
+<!-- displaying error messages -->
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="login">
+        <form class="" action="{% url 'mylibrary1:login' %}" method="POST">
+          {% csrf_token %}
+
+          <h1>Log in</h1>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <input type="Submit" value="Login">
+          <br>
+          <br>
+        </form>
+      </div>
+      <h4>Visiting? You can create your own login, or sign in as hgranger@hogwarts.com, password: studymore</h4>
+
+    </fieldset>
+    <br>
+    <a href="{% url 'app1:index' %}"><u style="text-decoration-color:silver;"><span style="color:silver">Back to Landing Page</u></a>
+    <!-- </div> wrapper end div-->
+  </body>
+</html>

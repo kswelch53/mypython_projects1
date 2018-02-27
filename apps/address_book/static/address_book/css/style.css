@@ -1,0 +1,84 @@
+
+a{
+  color: blue;
+  font-size: 14pt;
+  font-family: sans-serif;
+  /*margin-right: 10px;*/
+  padding: 0px 25px;
+}
+
+body{
+  background-color: beige;
+}
+
+/*page label*/
+h1, h2, h4{
+  font-family: sans-serif;
+}
+
+/*wrapper div for show and edit pages*/
+.miniwrap{
+  display: block;
+  width: 30%;
+  height: auto;
+  background-color: lavender;
+  padding: 5px 0px 20px 20px;
+}
+
+/*wrapper div for deletecheck page*/
+.miniwrap2{
+  display: block;
+  width: 50%;
+  height: auto;
+  background-color: lavender;
+  padding: 5px 0px 20px 20px;
+}
+
+/*div for add a new user link*/
+.newline{
+  display: block;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+/*spaces out table columns across the wrapper width*/
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead{
+  margin-right: 20px;
+}
+
+/*zebra striping for table rows*/
+tbody tr:nth-child(even){
+  background-color: lightblue;
+}
+tbody tr:nth-child(odd){
+  background-color: beige;
+}
+
+td{
+  font-family: sans-serif;
+  padding: 3px 0px 3px 15px;
+}
+
+/*table headings*/
+th{
+    background-color: lavender;
+}
+
+/*wrapper div for index page*/
+.wrapper{
+  width: auto;
+  border: 1px solid black;
+  /*padding-left: 15px;*/
+}
+
+.wrapper th{
+  font-size: 12pt;
+  font-weight: bold;
+  font-family: sans-serif;
+  padding: 15px 75px 15px 15px;
+}

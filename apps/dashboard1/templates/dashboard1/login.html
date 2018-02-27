@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <meta charset="utf-8"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard1/css/style.css' %}" media="screen" title="no title">
+    <title>App 1 Login page</title>
+  </head>
+  <body>
+
+    <div class="wrapper">
+
+        <form class="" action="{% url 'dashboard1:login' %}" method="POST">
+          {% csrf_token %}
+
+          <h1>Log in</h1>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <input type="Submit" value="Login">
+          <br>
+          <br>
+          <p><a href="{% url 'dashboard1:register' %}">Don't have an account? Register</a></p>
+        </form>
+
+      <!-- displaying error messages -->
+      <div class="messages">
+        {% if messages %}
+          <!-- <ul class="messages"> -->
+            <!-- {% for message in messages %} -->
+              <li><span class="errMessage">{{ message }}</span></li>
+            <!-- {% endfor %} -->
+          <!-- </ul> -->
+        {% endif %}
+      </div>
+
+    </div><!-- wrapper end div -->
+
+  </body>
+</html>

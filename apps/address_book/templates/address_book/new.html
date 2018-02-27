@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Users New page</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'address_book/css/style.css' %}" media="screen" title="no title">
+  </head>
+  <body>
+    <!-- <h1>This is new.html</h1> -->
+    <div class="miniwrap">
+    <h1>Add a new user</h1>
+    <form action="{% url 'address_book:create' %}" method="POST">
+      {% csrf_token %}
+      <h4>First name:</h4>
+      <input type="text" name="first_name">
+      <h4>Last name:</h4>
+      <input type="text" name="last_name">
+      <h4>Email:</h4>
+      <input type="text" name="email">
+      <br>
+      <br>
+      <input type="submit" value="Create">
+      <!-- returns to users page (index.html) -->
+      <a href="{% url 'address_book:index' %}">Go Back</a>
+    </form>
+  </body>
+</html>

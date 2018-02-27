@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shoes2/css/style.css' %}" media="screen" title="no title">
+
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class = "header">
+        <h1 class="one_line">{{ request.session.user_first_name }}'s Dashboard</h1><a href={% url 'shoes2:shoes' %}>Go to All Products</a><a href={% url 'shoes1:logout' %}>Log out</a>
+      </div>
+
+      <div class = "form_div">
+        <h3>Sell Product</h3>
+        <form class="sell" action="{% url 'shoes2:list_forsale' %}" method="POST">
+          {% csrf_token %}
+          <h3>Name: <input type="text" name="name" value=""></h3>
+          <h3>Amount: <input type="number" name="amount" value=""></h3>
+
+          <input type="Submit" value="Add">
+        </form>
+      </div>
+
+      <div class = "not_sold">
+        <h3>Your products that are not yet sold:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Products</th>
+              <th>Date Posted</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for shoes in shoes_not_sold %}
+              <tr>
+                <td align="center">{{ shoes.name }}</td>
+                <td align="center">{{ shoes.date_posted }}</td>
+                <td align="center">${{ shoes.amount }}</td>
+                <td align="center"><a href="{% url 'shoes2:remove' shoes_id=shoes.id %}">Remove<a></td>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class = "sales">
+        <h3>Sales:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Products</th>
+              <th>Date Bought</th>
+              <th>Buyer</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for shoes in shoes_sold %}
+              <tr>
+                <td align="center">{{ shoes.name }}</td>
+                <td align="center">{{ shoes.date_bought }}</td>
+                <td align="center">{{ shoes.buyer_link.first_name }} {{ shoes.buyer_link.last_name }}</td>
+                <td align="center">${{ shoes.amount }}</td>
+              {% endfor %}
+          </tbody>
+        </table>
+        <h4>Total: ${{ seller_total }}</h4>
+      </div>
+
+      <div class = "purchases">
+        <h3>Purchases:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Date Bought</th>
+              <th>Seller</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for shoes in shoes_bought %}
+              <tr>
+                <td align="center">{{ shoes.name }}</td>
+                <td align="center">{{ shoes.date_bought }}</td>
+                <td align="center">{{ shoes.seller_link.first_name }} {{ shoes.seller_link.last_name }}</td>
+                <td align="center">${{ shoes.amount }}</td>
+              {% endfor %}
+          </tbody>
+        </table>
+        <h4>Total: ${{ buyer_total }}</h4>
+      </div>
+
+    </div><!-- wrapper end div -->
+
+  </body>
+</html>

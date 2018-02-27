@@ -1,0 +1,104 @@
+a{
+  display: inline-block;
+  margin-right: 5%;
+}
+
+.addplan{
+  margin-left: 60%;
+}
+
+body{
+    background-color: beige;
+    font-family: sans-serif;
+}
+
+.addtrip{
+  display: block;
+  width: 100%;
+}
+
+.addtrip h1{
+  display: inline-block;
+  width: 46%;
+  font-size: 30pt;
+}
+
+.addtrip img{
+  display: inline-block;
+  /* width: 20%; */
+  vertical-align: top;
+  margin-left: 0px;
+
+}
+
+.error_messages{
+  color: red;
+}
+
+h2{
+  font-style: oblique;
+  font-size: 22pt;
+}
+
+.header{
+  display: block;
+}
+
+.one_line{
+  display: inline-block;
+  margin-right: 10%;
+}
+
+.miniwrap{
+  display: block;
+  width: 30%;
+  height: auto;
+  background-color: lavender;
+  border: 4px solid #7bade5;
+  padding: 10px 10px 10px 10px;
+}
+
+.miniwrap img{
+  margin-left: 12%;
+}
+
+.one_line a{
+    margin-right: 10%;
+}
+
+table{
+  border-collapse: collapse;
+  width: 70%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+/*zebra striping for table rows*/
+tbody tr:nth-child(even){
+  background-color: lavender;
+}
+tbody tr:nth-child(odd){
+  background-color: lightpink;
+}
+
+th{
+  background-color: #7bade5;
+}
+
+td{
+  border-left: 1px solid black;
+}
+
+input, textarea{
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.usertrips th{
+  font-weight: bold;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+}

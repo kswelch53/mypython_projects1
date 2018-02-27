@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'amadon_store/css/style.css' %}" media="screen" title="no title">
+    <title>Amadon checkout page</title>
+  </head>
+  <body>
+    <div class = "miniwrap">
+      <h2>Thank you for your business!</h2>
+      <h4>We charged your credit card for ${{ request.session.price }}.</h4>
+      <h4>You have ordered {{ request.session.counter }} items so far and spent ${{ request.session.chargeamount }} with Amadon.com!</h4>
+
+      <a href="{% url 'amadon_store:index' %}">Go Back</a>
+      <br>
+      <br>
+      <form action = "{% url 'amadon_store:clear' %}" method = "POST">
+        {% csrf_token %}
+        <input type="submit" value="Clear Session">
+      </form>
+    </div>
+  </body>
+</html>

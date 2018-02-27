@@ -1,0 +1,21 @@
+body{
+  /* background-color: black; */
+  font-family: sans-serif;
+  background-color: lightgray;
+}
+
+fieldset{
+  text-align: center;
+  width: 70%;
+  margin-left: 15%;
+  background-color: beige;
+  padding-bottom: 20px;
+}
+
+h1{
+  font-style: oblique;
+}
+
+h2{
+  text-decoration: underline;
+}

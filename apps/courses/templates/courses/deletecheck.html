@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+
+    <!-- <meta charset="utf-8"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Delete page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'courses/css/style.css' %}" media="screen" title="no title">
+  </head>
+
+  <body>
+
+    <div class="miniwrap">
+      <h2>Are you sure you want to delete the following course?</h2>
+      <h4>Name: {{ course.name }}</h4>
+      <h4>Description: {{ course.desc }}</h4>
+
+<!-- No button routes back to index page -->
+<!-- Yes button routes to remove function in views.py -->
+
+<!-- Note: It's illegal to wrap a button in an anchor tag (above), as it doesn't work in all browsers -->
+<!-- So these are anchor tags that have been styled as buttons in css -->
+    <div class="buttonrow">
+      <p><a href = "{% url 'courses:index' %}" class="buttonB">No</a>
+      <a href = "{% url 'courses:remove' course_id=course.id %}" class="buttonC">Yes! I want to delete this</a></p>
+    </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+a{
+  font-family: sans-serif;
+  margin-left: 15px;
+}
+
+button{
+  background-color: darkblue;
+  color: white;
+  margin-left: 58%;
+  padding: 5px 5px 5px 5px;
+  border-radius: 10px;
+  vertical-align: top;
+}
+
+.editbox{
+    display: inline-block;
+    background-color: lightblue;
+    border: 1px solid black;
+    width: 30%;
+    height: auto;
+    vertical-align: top;
+    padding: 0px 0px 15px 15px;
+    margin-right: 10px;
+}
+
+.edit_note p{
+  font-family: sans-serif;
+  color: red;
+}
+
+/*class to align elements horizontally*/
+.one_line{
+  display: inline;
+}
+
+.footer{
+  display: block;
+  /*width: 80%;*/
+  margin-top: 10px;
+  /*border: 1px solid black;*/
+  /*padding-left: 10px;*/
+}
+
+.footer a{
+  background-color: darkblue;
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+  border: 1px solid lightgray;
+  border-radius: 10px 10px 10px 10px;
+  padding: 5px 10px 5px 10px;
+}
+
+h1, h2, h3, h4{
+  font-family: sans-serif;
+}
+
+/*anchor link styled like a button*/
+.header a{
+  background-color: darkblue;
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+  border: 1px solid lightgray;
+  border-radius: 10px 10px 10px 10px;
+  padding: 5px 10px 5px 10px;
+  margin-left: 70%;
+}
+
+.header button{
+  display: inline-block;
+}
+
+.header form{
+  display: block;
+  margin-bottom: 15px;
+}
+
+.miniwrap{
+  display: block;
+  width: 50%;
+  height: auto;
+  border: 1px solid purple;
+  background-color: lightblue;
+  padding: 0px 0px 15px 15px;
+}
+
+/*buttons wrapped in paragraph type so they can be color-styled*/
+p button{
+  background-color: green;
+  color: white;
+  padding: 5px 5px 5px 5px;
+}
+
+table{
+  /*border-collapse: collapse;*/
+  width: 100%;
+  text-align: center;
+}
+
+/*zebra striping for table rows*/
+tbody tr:nth-child(even){
+  background-color: tan;
+}
+tbody tr:nth-child(odd){
+  background-color: lightpink;
+}
+
+td{
+  font-family: sans-serif;
+}
+
+th{
+  font-family: sans-serif;
+  background-color: lavender;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+}

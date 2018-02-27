@@ -1,0 +1,51 @@
+a{
+  margin-right: 5%;
+  color: white;
+}
+
+body{
+  background-color: black;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+fieldset{
+  width: 20%;
+  margin-left: 40%;
+}
+
+.header{
+  display: block;
+}
+
+h1{
+  color: white;
+  font-style: oblique;
+}
+
+h2{
+  color: white;
+  margin-left: 10%;
+  margin-right: 15%;
+}
+
+h3{
+  color: white;
+}
+
+h4{
+  color: white;
+}
+
+.one_line{
+  display: inline-block;
+}
+
+p{
+  color: #35d7f2;
+}
+
+textarea{
+  background-color: #e5d7f2;
+  margin-left: 5%;
+}

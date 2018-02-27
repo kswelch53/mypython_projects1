@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travelbuddy_two/css/style.css' %}" media="screen" title="no title">
+
+    <title>Add Plan</title>
+  </head>
+  <body>
+
+    <div class="miniwrap">
+        <p><a href="{% url 'travelbuddy_one:logout' %}">Logout</a></p>
+        <div class = "addtrip">
+          <h1>Add a Trip</h1><img src="{% static 'travelbuddy_two/images/visa_lavender.jpg' %}" width="42%" alt="image">
+        </div>
+
+      <form action = "{% url 'travelbuddy_two:add_plan' %}" method="POST">
+        {% csrf_token %}
+
+        <h3>Destination: <textarea name = "destination" rows = "3" style = "width:97%"></textarea></h3>
+        <h3>Description: <textarea name = "plan" rows = "3" style = "width:97%"></textarea></h3>
+        <h3>Travel Date From: <input type="date" name = "start_date" value=""></h3>
+
+        <h3>Travel Date To: <input type="date" name="end_date" value=""></h3>
+
+        <input type="Submit" value="Add">
+
+        <div class="error_messages">
+    <!-- displaying error messages -->
+          {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+      </form>
+
+    </div>
+  </body>
+</html>

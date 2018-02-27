@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'wall_two/css/style.css' %}" media="screen" title="no title">
+    <title>The Wall main page</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+        <fieldset>
+          <h1>The Message Wall</h1>
+        </fieldset>
+        <br>
+
+        <div class="header">
+
+          <h2 class="one_line">Welcome, {{ request.session.user_first_name }}!</h2>!<a href={% url 'wall_one:logout' %}>log off</a><a href="{% url 'app1:index' %}">back to landing page</a>
+        </div>
+
+      <h3>Post a message</h3>
+
+      <form class="messagebox" action="{% url 'wall_two:post_message'%}" method="POST">
+        {% csrf_token %}
+        <textarea name ="message" rows="5" cols="80" value=""></textarea>
+        <button type="submit" value="">Post a message</button>
+      </form>
+
+      {% for user in users %}
+
+  <!-- 'messages' in user.messages refers to the related name in the Message model-->
+        {% for message in user.messages.all %}
+
+          <h4>{{ message.message }}</h4>
+          <h4>{{ user.first_name }} {{ user.last_name }} -- posted on {{ message.created_at }}</h4>
+          <br>
+
+
+  <!-- displaying Comment objects -->
+          <div class="comments">
+            {% for comment in message.comments.all %}
+              <p>{{ comment.comment }}</p>
+              <p>{{ comment.user_link.first_name }} {{ comment.user_link.last_name }} -- posted on {{ comment.created_at }}</p>
+              <p>______________________</p>
+            {% endfor %} <!-- end of comment loop -->
+          </div>
+
+      <!-- comments here -->
+      <!-- hidden field for message id? -->
+      <!-- ms_id saves message.id and sends it to views.py so the message can be fetched by id and linked to the newly created comment  -->
+          <form class="commentbox" action="{% url 'wall_two:post_comment' ms_id=message.id %}" method="POST">
+            {% csrf_token %}
+            <textarea name="comment" rows="4" cols="60" value="{{ message.id }}"></textarea>
+            <button type="submit" value="">Post a comment</button>
+          </form>
+
+        {% endfor %} <!-- end of messages loop -->
+
+      {% endfor %} <!-- end of user loop -->
+
+    </div> <!-- wrapper end div -->
+
+  </body>
+</html>

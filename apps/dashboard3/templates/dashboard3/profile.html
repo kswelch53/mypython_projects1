@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard3/css/style.css' %}" media="screen" title="no title">
+    <title>Profile</title>
+  </head>
+  <body>
+
+<!-- displays user info on profile page -->
+    <div class="miniwrap">
+      <h1>{{ profiled_user.first_name }} {{ profiled_user.last_name }}
+        <h3>Registered at: <span style="font-weight: lighter">{{ profiled_user.created_at }}</h3>
+        <h3>User ID: <span style="font-weight: lighter">#{{ profiled_user.id }}</h3>
+        <h3>Email address: <span style="font-weight: lighter">{{ profiled_user.email }}</h3>
+
+<!-- no input for description yet -->
+        <h3>Description: <span style="font-weight: lighter">{{ user_desc.description }}</h3>
+        <br>
+
+<!-- section where users post messages -->
+        <h2>Leave a message for {{ profiled_user.first_name }}</h2>
+<!-- form routes to app3 profile method, which redirects to user_posts method -->
+        <form action = "{% url 'dashboard3:profile' user_id=profiled_user.id %}" method="POST">
+          {% csrf_token %}
+          <textarea name = "message" rows="4" cols="70"></textarea>
+          <button type="Submit" value="Post">Post</button>
+        </form>
+
+
+        <div class = "messages">
+       <!-- This loop is posted messages -->
+       {% for message in messages_to_user %}
+        <p>{{ message.post }} -- {{ message.send_posts.first_name }} {{ message.send_posts.last_name }},
+          {{ message.created_at }}</p>
+       {% endfor %}
+        </div>
+
+    </div><!-- miniwrap end div -->
+  </body>
+</html>

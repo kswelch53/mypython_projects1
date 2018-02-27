@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quotes_two/css/style.css' %}" media="screen" title="no title">
+    <title>Quotes page</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+      <div class="header">
+
+        <h1 class="one_line">Welcome, {{ request.session.user_alias }}</h1><a href={% url 'quotes_one:logout' %}>Logout</a><a href="{% url 'app1:index' %}">Back to Landing Page</a>
+      </div>
+
+      <div class="column">
+
+        <h2>Quotable Quotes</h2>
+
+        <div class="quotebox">
+
+<!-- main list, containing all quotes -->
+          {% for quote in quotes_minus_favs %}
+            <p>{{ quote.author }}:<h4> {{ quote.quote }}</h4></p>
+
+<!-- links to id of each user who posted each quote in the loop -->
+            <h5>Posted by <a href="{% url 'quotes_two:users' user_id=quote.post_id.id %}">{{ quote.post_id.alias }}</a></h5>
+
+<!-- button sends quote to add_favquote method to be added to user's favorites list -->
+<!-- **** leave out id-form link in a for-loop **** -->
+            <form action="{% url 'quotes_two:add_favquote' quote_id=quote.id %}" method="POST" >
+              {% csrf_token %}
+              <button type="submit" value="">Add to My List</button>
+              <br>
+              <p><span style="color:purple">_________________________________</span></p>
+              <br>
+              <br>
+            </form>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="column">
+
+        <h2>Your Favorites</h2>
+
+        <div class="quotebox">
+
+<!-- list of favorite quotes that user has added to his/her own list -->
+<!-- **** leave out id-form link in a for-loop **** -->
+          {% for favquote in favquotes %}
+          <p>{{ favquote.author }}: <h4>{{ favquote.quote }}</h4></p>
+          <h5>Posted by <a href="{% url 'quotes_two:users' user_id=favquote.post_id.id %}">{{ favquote.post_id.alias }}</a></h5>
+          <form action="{% url 'quotes_two:remove_quote' favquote_id=favquote.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" value="">Remove from My List</button>
+            <p><span style="color:purple">_________________________________</span></p>
+            <br>
+          </form>
+          <br>
+          {% endfor %}
+        </div>
+
+<!-- user can add a quote to the main list -->
+        <h2>Contribute a Quote:</h2>
+        <form action="{% url 'quotes_two:contribute_quote' %}" method="POST" id="newquote">
+          {% csrf_token %}
+          <h4>Quoted By:</h4>
+          <input type="text" name="author"><br>
+          <h4>Message:</h4>
+          <textarea name ="quote" rows="4" cols="40" value=""></textarea><br>
+          <br>
+          <button type="submit" form="newquote" value="Submit">Submit</button>
+
+      </div>
+
+
+<!-- displaying user validation error messages -->
+      <div class="error_messages">
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div><!--error_messages end div -->
+
+
+    </div> <!-- wrapper end div -->
+
+  </body>
+</html>

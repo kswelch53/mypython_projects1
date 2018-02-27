@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mylibrary2/css/style.css' %}" media="screen" title="no title">
+    <title>Add Book and Review</title>
+  </head>
+
+  <body>
+    <fieldset>
+      <div class="header">
+        <div class="one_line1">
+          <h2>Add a New Book Title and a Review:</h2>
+        </div>
+        <div class="one_line2">
+          <p><a href={% url 'mylibrary2:index' %}>Home</a><a href={% url 'mylibrary1:logout' %}>Logout</a></p>
+        </div>
+      </div><!-- header end div -->
+
+      <div class="wrapper">
+        <div class="column_add_book1">
+
+          <form action="{% url 'mylibrary2:add_book' %}" method="POST">
+            {% csrf_token %}
+
+            <div class="miniwrap">
+              <div class="one_line">
+                <label for="book_title"><h3>Book Title:</h3></label>
+                <input type='text' name='book_title'>
+              </div>
+
+              <div class="one_line">
+                <h3>Author:</h3>
+                <select name="pick_author" value=""> <p>Choose from the list:</p>
+                  <option value="">select an author</option>
+                  <option value="Jane Austen">Jane Austen</option>
+                  <option value="Ray Bradbury">Ray Bradbury</option>
+                  <option value="Charlotte Bronte">Charlotte Bronte</option>
+                  <option value="Charles Dickens">Charles Dickens</option>
+                  <option value="Robert Heinlein">Robert Heinlein</option>
+                  <option value="Stephen King">Stephen King</option>
+                  <option value="J.K. Rowling">J.K. Rowling</option>
+                </select>
+              </div>
+            </div><!-- miniwrap end div -->
+
+            <h3>Or add a new author: <input type="text" name="add_author" value=""></h3>
+
+            <h4>Review: <textarea name = "review" rows="6" cols="60"></textarea></h4>
+
+            <div class="miniwrap">
+              <div class="one_line">
+                <p>Rating: <select name="rating">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3" selected>3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select> stars</p>
+              </div>
+
+              <div class="one_line">
+                <button class="submit" value="Add">Add Book and Review</button>
+              </div>
+            </div><!-- miniwrap end div -->
+
+          </form>
+        </div><!-- column end div -->
+
+        <div class="column_add_book2">
+          <img src="{% static 'mylibrary3/images/books1_lavender.jpg' %}" width="90%" align="right" alt="image">
+          <!-- <img src="{% static 'mylibrary3/images/pens_lavender.jpg' %}" width="40%" align="right" alt="image"> -->
+          <!-- <img src="{% static 'mylibrary3/images/post_its_lavender.jpg' %}" width="90%" align="right" alt="image"> -->
+
+        </div>
+
+      </div><!-- wrapper end div -->
+    </fieldset>
+  </body>
+</html>

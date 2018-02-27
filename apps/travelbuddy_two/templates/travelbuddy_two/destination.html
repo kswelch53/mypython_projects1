@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Destination</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travelbuddy_two/css/style.css' %}" media="screen" title="no title">
+
+  </head>
+  <body>
+
+    <div class="miniwrap">
+        <img src="{% static 'travelbuddy_two/images/travel_lavender.jpg' %}" width="75%" alt="image">
+        <div class = "one_line">
+          <p><a href="{% url 'travelbuddy_two:index' %}">Home</a><a href="{% url 'travelbuddy_one:logout' %}">Logout</a></p>
+        </div>
+
+      <h2>Your destination is:</h2>
+      <h3><span style="font-weight:lighter">{{ trip.destination }}</span></h3>
+      <h3>Trip planned by: <span style="font-weight:lighter">{{ trip_planner.name }}</span></h3>
+      <h3>Description: <span style="font-weight:lighter">{{ trip.plan }}</span></h3>
+      <h3>Travel date from: <span style="font-weight:lighter">{{ trip.start_date }}</span></h3>
+      <h3>Travel date to: <span style="font-weight:lighter">{{ trip.end_date }}</span></h3>
+
+      <h2>Other users joining the trip:</h2>
+          {% for joiner in trip_joiners %}
+            <h3><span style="font-weight:lighter">{{ joiner.name }}</span></h3>
+          {% endfor %}
+    </div>
+
+  </body>
+</html>

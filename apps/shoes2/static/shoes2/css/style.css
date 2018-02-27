@@ -1,0 +1,63 @@
+a{
+  margin-left: 7%;
+}
+
+body{
+  font-family: sans-serif;
+  background-color: lightgray;
+}
+
+.form_div, .not_sold, .sales, .purchases{
+  width: 98%;
+  margin-left: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+h4{
+  width: 150px;
+  border: 1px solid lightgray;
+  background-color: lightgray;
+}
+
+.header{
+  display: block;
+  padding-left: 10%;
+}
+
+.one_line{
+  display: inline-block;
+}
+
+table{
+  border-collapse: collapse;
+  width: 80%;
+}
+
+/*zebra striping for table rows*/
+tbody tr:nth-child(even){
+  background-color: lavender;
+}
+tbody tr:nth-child(odd){
+  background-color: lightblue;
+}
+
+.table1{
+  width: 100%;
+  padding-left: 10%;
+}
+.table1 td{
+  margin-right: 10px;
+}
+.table1 th{
+  text-align: left;
+}
+
+.wrapper{
+  border: 1px solid black;
+  background-color: beige;
+  width: 90%;
+  height: auto;
+  padding-bottom: 20px;
+  margin-left: 20px;
+}

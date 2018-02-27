@@ -1,0 +1,45 @@
+body{
+  background: #332751;
+  font-family: sans-serif;
+}
+
+h1{
+  font-style: italic;
+  font-weight: lighter;
+  color: silver;
+}
+
+h3, h4{
+  color: silver;
+}
+
+/*this doesn't work:*/
+.error_messages li{
+  color: red;
+}
+
+fieldset{
+  text-align: center;
+}
+
+input{
+  background-color: silver;
+  border-radius: 10px;
+}
+
+.login{
+  display: block;
+  margin-left: 10px;
+}
+
+.registration{
+  display: block;
+  margin-left: 10px;
+}
+
+.wrapper{
+  display: block;
+  width: 30%;
+  background-color: lightblue;
+  border: 1px solid black;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Friends Login and Registration</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'friends_one/css/style.css' %}" media="screen" title="no title">
+
+  </head>
+  <body>
+    <!-- <h1>This is index.html in apps_one</h1> -->
+
+    <div class="wrapper">
+      <h4>Welcome to Friends! Please log in or register</h4>
+      <div class="registration">
+
+        <form class="" action="{% url 'friends_one:register' %}" method="POST">
+          {% csrf_token %}
+
+          <h1>Registration</h1>
+          <h3>Name: <input type="text" name="name" value=""></h3>
+          <h3>Alias: <input type="text" name="alias" value=""></h3>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <!-- type="password" hides the password -->
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <h3>Confirm Password: <input type="password" name="confirmPW" value=""></h3>
+          <!-- type="date" generates a datepicker -->
+          <h3>Date of Birth: <input type="date" name="dob" value=""></h3>
+          <input type="Submit" value="Register">
+          <br>
+          <br>
+        </form>
+      </div><!-- end of registration -->
+
+
+      <div class="error_messages">
+<!-- displaying error messages -->
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="login">
+
+        <form class="" action="{% url 'friends_one:login' %}" method="POST">
+          {% csrf_token %}
+
+          <h1>Log in</h1>
+          <h3>Email: <input type="text" name="email" value=""></h3>
+          <h3>Password: <input type="password" name="password" value=""></h3>
+          <input type="Submit" value="Login">
+          <br>
+          <br>
+        </form>
+        <h4>Visiting? You can create your own login, or sign in as hgranger@hogwarts.com, password: studymore</h4>
+        <a href="{% url 'app1:index' %}"><u style="text-decoration-color:purple;"><span style="color:purple">Back to Landing Page</u></a>
+        <br>
+      </div>
+
+    </div><!-- wrapper end div-->
+  </body>
+</html>

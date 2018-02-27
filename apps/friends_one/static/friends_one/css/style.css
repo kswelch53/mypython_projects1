@@ -1,0 +1,27 @@
+
+body{
+  font-family: sans-serif;
+}
+
+h4{
+  color: purple;
+  text-align: center;
+}
+
+.login{
+  display: block;
+  margin-left: 10px;
+}
+
+.registration{
+  display: block;
+  margin-left: 10px;
+}
+
+.wrapper{
+  display: block;
+  width: 30%;
+  background-color: lavender;
+  border: 1px solid black;
+  padding-bottom: 20px;
+}

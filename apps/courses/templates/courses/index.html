@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+
+    <!-- <meta charset="utf-8"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Index page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'courses/css/style.css' %}" media="screen" title="no title">
+  </head>
+
+  <body>
+    <!-- <h1>index.html page</h1> -->
+
+    <div class = "wrapper">
+
+      <div class = "add_courses"><!-- div for add-course form-->
+        <form action = "{% url 'courses:addcourse' %}" method="POST" id="addcourse">
+          {% csrf_token %}
+          <h2>Add a new course</h2>
+          <h4>Name: <textarea name="name" rows="2" cols="55"></textarea></h4>
+          <h4>Description: <textarea name = "desc" rows="4" cols="50"></textarea></h4>
+          <button class="submit" form="addcourse" value="Add">Add</button>
+        </form>
+      </div>
+
+      <div class="messages">
+        <!-- {% for message in messages %} -->
+          <p>{{ message }}</p>
+        <!-- {% endfor %}   -->
+      </div>
+
+      <div class="display_courses"><!--div for the table display of added courses; has links to remove courses -->
+        <!-- <table width=50%> -->
+        <table>
+          <thead>
+            <tr>
+              <th>Course Name</th>
+              <th>Description</th>
+              <th>Date Added</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <!-- <form action = "/displaycourse" method = "POST" -->
+            <!-- {% csrf_token %} -->
+            <tbody>
+              {% for course in courses %}
+                <tr>
+                  <td>{{ course.name }}</td>
+                  <td>{{ course.desc }} {{ user.last_name }}</td>
+                  <td>{{ course.date_added }}</td>
+                  <td><a href="{% url 'courses:deletecheck' course_id=course.id %}">remove</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </form>
+        </table>
+      </div><!-- display_courses end div -->
+
+    </div><!-- wrapper end div-->
+    <p class="footer"><a href="{% url 'app1:index' %}"><span style="text-decoration:underline">Back to Landing Page</span></a></p>
+  </body>
+</html>

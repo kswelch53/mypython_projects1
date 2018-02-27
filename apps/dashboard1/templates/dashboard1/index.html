@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard1/css/style.css' %}" media="screen" title="no title">
+    <title>User Dashboard app 1 index page</title>
+  </head>
+  <body>
+    <div class="wrapper">
+
+      <div class="header">
+        <h1>Welcome to the User's Dashboard!</h1>
+      </div>
+
+      <div class="centerwrap">
+
+        <div class="nav">
+          <h2>Check out this website:</h2>
+          <p><a href="{% url 'dashboard1:login' %}">Log in</a></p>
+          <p><a href="{% url 'dashboard1:register' %}">Register</a></p>
+
+          <!-- links to manage_users.html in App 2 -->
+          <p><a href="{% url 'dashboard2:index' %}">Administrators</a></p>
+          <!-- links to all_users.html in App 3 -->
+          <p><a href="{% url 'dashboard3:all_users' %}">All Users</a></p>
+
+          <p><a href="{% url 'dashboard1:logout' %}">Log out</a></p>
+
+          <p><a href="{% url 'app1:index' %}">Back to Landing Page</a></p>
+
+
+        </div>
+
+        <div class="main">
+          <h2>About the Dashboard</h2>
+          <h3>Register to join our website! You can complete a profile, visit other users' pages and leave messages for them.</h3>
+          <h3>Level 9 users can access the Administrators page.</h3>
+        </div>
+
+      </div><!--centerwrap end div-->
+
+      <div class="footer">
+        <h4>Footnote to visitors: You're invited to log in as hgranger@hogwarts.com, password: studymore, if you would like to access the Administrators page.</h4>
+      </div>
+
+    </div><!-- wrapper end div -->
+  </body>
+</html>

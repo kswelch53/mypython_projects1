@@ -1,0 +1,41 @@
+a{
+  margin-left: 10px;
+}
+
+body{
+  background-color: beige;
+  font-family: sans-serif;
+}
+
+.error_messages{
+  display: block;
+}
+
+h1{
+  color: #7bade5;
+  margin-top: 0px;
+  margin-left: 38%;
+  font-style: oblique;
+  font-size: 28pt;
+}
+
+.header img{
+  margin-left: 42%;
+}
+
+.login_reg{
+  display: inline-block;
+  background-color: #7bade5;
+  border: 1px solid black;
+  width: 40%;
+  height: auto;
+  vertical-align: top;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+  margin-left: 8%;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'amadon_store/css/style.css' %}" media="screen" title="no title">
+    <title>Amadon index page</title>
+  </head>
+  <body>
+
+    <div class = "wrapper">
+      <h2>Welcome to Amadon Store!</h2>
+
+      <div class = "orderitems">
+        <table width=15%>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+
+            {% for product in products %}
+
+              <form action = "{% url 'amadon_store:process_order' %}" method = "POST">
+                {% csrf_token %}
+                <td height="40">{{ product.name }}</td>
+                <td>${{ product.price }}</td>
+                <td><input type="hidden" name="item" value="{{ product.id }}">
+                <select name="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select></td>
+                <td><input type="submit" value="Buy!"></td>
+              </form>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <p><a href="{% url 'app1:index' %}"><span style="color:purple">Back to Landing Page</span></a></p>
+  </body>
+</html>

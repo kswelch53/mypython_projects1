@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard3/css/style.css' %}" media="screen" title="no title">
+
+    <title>Edit Profile page</title>
+  </head>
+  <body>
+
+      <p><h1 class = "one_line">Edit profile for {{ user.first_name }} {{ user.last_name }}</h1><a href="{% url 'dashboard3:all_users' %}">All Users</a></p>
+
+    <div class="wrapper">
+      <div class="editbox">
+
+        <!-- Users can update their email address and name -->
+        <form action="{% url 'dashboard3:edit_info' user_id=user.id %}" method="POST" id="edit_email">
+          {% csrf_token %}
+
+          <h2>Edit Information</h2>
+
+          <h4>Email Address:</h4>
+          <input type="text" name="email">
+          <h4>First Name:</h4>
+          <input type="text" name="first_name">
+          <h4>Last Name:</h4>
+          <input type="text" name="last_name">
+          <button type="submit" form="edit_email" value="">Save</button>
+        </form>
+
+      </div> <!-- edit box end div -->
+
+
+<!-- Users can update their password -->
+      <div class="editbox">
+
+        <form action="{% url 'dashboard3:change_pw' user_id=user.id %}" method="POST" id="edit_pw">
+          {% csrf_token %}
+
+          <h2>Change Password</h2>
+
+          <h4>Password:</h4>
+          <input type="password" name="password">
+          <h4>Password Confirmation:</h4>
+          <input type="password" name="pw_confirm">
+          <button type="submit" form="edit_pw" value="">Update Password</button>
+        </form>
+      </div>
+
+
+<!-- The textarea data doesn't submit when form has an id field and button has a form field -->
+
+<!-- Users can add a description  -->
+      <div class="footer">
+        <form action="{% url 'dashboard3:edit_desc' user_id=user.id %}" method="POST">
+          {% csrf_token %}
+
+          <h2>Edit Description</h2>
+          <textarea name = "description" rows="3" cols="75"></textarea>
+          <!-- <input type="textarea" name = "message" rows="3" cols="75"></textarea> -->
+          <button type="submit" value="">Save</button>
+        </form>
+      </div>
+
+    </body>
+  </html>

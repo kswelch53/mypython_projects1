@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mylibrary3/css/style.css' %}" media="screen" title="no title">
+    <title>Add to Bookshelf</title>
+  </head>
+
+  <body>
+    <fieldset>
+
+      <div class = "header">
+        <div class = "one_line">
+          <h2>Add a book to your personal library</h2>
+          <h4>Select from the list of books below, or add your own</h4>
+        </div>
+        <div class = "one_line">
+          <p><a href={% url 'mylibrary2:index' %}>Home</a><a href={% url 'mylibrary1:logout' %}>Logout</a></p>
+        </div>
+      </div>
+
+      <div class="column1">
+
+        <form class = "add_book" action="{% url 'mylibrary3:add_to_bookshelf' %}" method="POST">
+          {% csrf_token %}
+
+            <label for="book_title"><h4>Book Title:</h4></label>
+            <input type='text' name='book_title'>
+
+            <label for="author"><h4>Author:</h4></label>
+            <input type='text' name='author'>
+            <br>
+            <br>
+            <button class="submit" value="Add">Add Book</button>
+          </form>
+            <br>
+            <br>
+            <img src="{% static 'mylibrary3/images/books1_lavender.jpg' %}" width="80%" alt="image">
+          </div>
+
+        <div class="column2">
+          <h2>Books:</h2>
+          <div class="scrollbar">
+            {% for book in all_books %}
+              <p><a href="{% url 'mylibrary3:add_to_bookshelf2' book_id=book.id %}">{{ book.title }}</a></p>
+
+            {% endfor %}
+          </div><!-- scrollbar end div -->
+        </div><!-- column2 end div -->
+
+    </fieldset>
+  </body>
+</html>

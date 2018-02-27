@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shoes2/css/style.css' %}" media="screen" title="no title">
+
+    <title>Shoes</title>
+  </head>
+  <body>
+
+    <div class="wrapper">
+      <div class = "header">
+        <h1 class="one_line">Welcome, {{ request.session.user_first_name }}!</h1>    <a href="{% url 'app1:index' %}">Back to Landing Page</u></a><a href={% url 'shoes2:dashboard' %}>Go to Dashboard</a><a href={% url 'shoes1:logout' %}>Log out</a>
+      </div>
+
+      <div class = "table1">
+        <h2>All Athletic Shoes for Sale</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Seller</th>
+              <th>Date Posted</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for shoes in products %}
+              <tr>
+                <td>{{ shoes.name }}</td>
+                <td>{{ shoes.seller_link.first_name }} {{ shoes.seller_link.last_name }}</td>
+                <td>{{ shoes.date_posted }}</td>
+                <td>${{ shoes.amount }}</td>
+                <td><a href="{% url 'shoes2:buy' shoes_id=shoes.id %}">Buy<a></td>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div><!-- wrapper end div -->
+
+  </body>
+</html>

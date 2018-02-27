@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'appointments2/css/style.css' %}" media="screen" title="no title">
+    <title>Update Appointment</title>
+  </head>
+  <body>
+
+    <div class = "header2">
+        <h1 class="one_line"></h1><a href={% url 'appointments2:index' %}>Dashboard<a href={% url 'appointments1:logout' %}>Logout</a></p>
+    </div>
+
+    <div class = "task_div">
+      <form class="" action="{% url 'appointments2:edit' task_id=task.id %}" method="POST">
+        {% csrf_token %}
+
+      <h3>Tasks: <input type="text" name="task_name" value="{{ task.task_name }}"></h3>
+
+      <h3>Status:<select name="status" value="">
+          <option value="Done">Done</option>
+          <option value="Pending">Pending</option>
+          <option value="Missed">Missed</option>
+        </select></h3>
+
+        <div class="error_messages">
+    <!-- displaying error messages -->
+          {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+<!-- displays actual date -->
+      <h3>Date: <input type="date" name="task_date" value="{{ task.date|date:"Y-m-d" }}"></h3>
+<!-- time displays a valid option -->
+      <h3>Time: <input type="time" name="task_time" value="16:30"></h3>
+
+    <div class="update">
+      <input type="Submit" value="Update">
+    </div>
+
+  </body>
+</html>

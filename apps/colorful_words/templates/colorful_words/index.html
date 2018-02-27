@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Colorful Words</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'colorful_words/css/style.css' %}" media="screen" title="no title">
+  </head>
+
+  <body>
+    <div class = "wrapper">
+
+      <div class = "header">
+
+        <div class = "hed">
+          <h1>C<span style="color:red">o</span><span style="color:green">l</span><span style="color:#7a03c4">o</span><span style="color:#ea841e">r</span>f<span style="color:red">u</span><span style="color:green">l</span></h1>
+        </div>
+        <div class = "hed">
+          <h1><span style="color:purple">W</span><span style="color:#ea841e">o</span>r<span style="color:red">d</span><span style="color:green">s</span></h1>
+        </div>
+
+      </div><!-- header end -->
+
+        <!--pick a color-->
+      <div class = "column">
+
+        <form action="{% url 'colorful_words:addword' %}" method = "POST">
+          {% csrf_token %}
+          <h4>Add a new word</h4>
+            <input type = "text" name="add_word"><br>
+
+          <h4>Select your favorite color</h4>
+
+          <table style="width:100%">
+            <tr>
+              <div class="color_column">
+                <p><input type="radio" name="color" value = "red" checked> Red
+                <input type="color" name="red" value = "#cc0835"></p>
+                <p><input type="radio" name="color" value = "blue"> Blue
+                <input type="color" name="blue" value = "#0825cc"></p>
+                <p><input type="radio" name="color" value = "green"> Green
+                <input type="color" name="green" value = "#278451"></p>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="color_column">
+                <p><input type="radio" name="color" value = "yellow"> Yellow
+                <input type="color" name="yellow" value = "#eef952"></p>
+                <p><input type="radio" name="color" value = "purple"> Purple
+                <input type="color" name="purple" value = "#7e26cc"></p>
+                <p><input type="radio" name="color" value = "pink"> Pink
+                <input type="color" name="pink" value = "#f7aaf0"></p>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="color_column">
+                <p><input type="radio" name="color" value = "orange"> Orange
+                <input type="color" name="orange" value = "#ef9347"></p>
+                <p><input type="radio" name="color" value = "black"> Black
+                <input type="color" name="black" value = "#000000"></p>
+                <p><input type="radio" name="color" value = "brown"> Brown
+                <input type="color" name="brown" value = "#685b3b"></p>
+              </div>
+            </tr>
+          </table>
+
+          <input type="checkbox" id="showbigfont" name="bigfont" value="on" checked="checked">Show in BIG font!<br>
+          <br>
+          <input type = "submit" value = "Submit">
+        </form>
+      </div><!-- column end div -->
+
+
+      <div class = "column">
+        <br>
+        <br>
+        <form action="{% url 'colorful_words:clear' %}" method = "POST">
+          {% csrf_token %}
+          <input type="submit" value="Clear Session">
+        </form>
+
+        <h2></h2>
+        {% for words in request.session.wordlist %}
+          <p><span style="color:{{ words.1 }}"><font size="{{ words.2 }}"> {{ words.0 }}</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{{ words.3 }}</p>
+        {% endfor %}
+      </div><!-- column end div -->
+
+    </div><!--wrapper end div-->
+    <p><a href="{% url 'app1:index' %}"><span style="color:purple">Back to Landing Page</span></a></p>
+  </body>
+</html>

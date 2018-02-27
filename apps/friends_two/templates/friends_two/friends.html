@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'friends_two/css/style.css' %}" media="screen" title="no title">
+    <title>Friends</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+      <div class="header">
+        <h1>Hello, {{ request.session.user_alias }}!</h1>
+        <p><a href={% url 'friends_one:logout' %}>Logout</a><a href="{% url 'app1:index' %}">Back to Landing Page</a></p>
+
+      </div>
+
+        <h3>Here is the list of your friends:</h3>
+
+          <h4>{{ request.session.no_friends }}</h4>
+
+          <br>
+        <div class="friends_list">
+          <table>
+            <thead>
+              <tr>
+                <th>Alias</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for friend in friends %}
+                <tr>
+                  <td>{{ friend.alias }}</td>
+
+                  <!-- needs right id route -->
+                  <td><h5><a href="{% url 'friends_two:profile' id=friend.id %}">View profile</a></h5></td>
+                  <!-- needs right id route -->
+                    <td><h5 class = "friendlink"><a href="{% url 'friends_two:remove_friend' friend_id=friend.id %}">Remove as Friend</a></h5></td>
+
+
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+
+        <h3>Other users not on your friends list:</h3>
+
+        <div class="others_list">
+          <table>
+            <thead>
+              <tr>
+                <th>Alias</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for user in users %}
+                <tr>
+                  <td><a href="{% url 'friends_two:profile' id=user.id %}">{{ user.user.alias }}</a></td>
+
+                  <div class="buttonstyle">
+                    <td><h5 class = "friendlink"><a href="{% url 'friends_two:add_friend' user2_id=user.user.id %}">Add as Friend</a></h5></td>
+
+                  </div>
+
+
+              {% endfor %}
+            </tbody>
+
+          </table>
+        </div>
+
+    </div> <!-- wrapper end div -->
+  </body>
+</html>

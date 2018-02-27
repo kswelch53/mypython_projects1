@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard2/css/style.css' %}" media="screen" title="no title">
+    <title>Manage Users</title>
+  </head>
+  <body>
+
+    <!-- page header and anchor link styled like a button, aligned horizontally -->
+        <div class="header">
+          <p><h1 class="one_line">Manage Users</h1><a href="{% url 'dashboard2:add_user' %}">Add New</a></p>
+        </div>
+
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>email</th>
+                <th>created at</th>
+                <th>user_level</th>
+                <th>actions</th>
+              </tr>
+            </thead>
+
+              {% for user in users %}
+              <tr>
+                <td>{{ user.id }}</td>
+                <td><a href="{% url 'dashboard3:profile' user_id=user.id %}"> {{ user.first_name }} {{ user.last_name }}</a></td>
+                <td>{{ user.email }} </td>
+                <td>{{ user.created_at }}</td>
+                <td>{{ user.level }}</td>
+
+      <!-- Routes admins to functions for editing and deleting users -->
+                <td><a href="{% url 'dashboard2:edit_user' user_id=user.id %}">Edit</a> <a href="{% url 'dashboard2:check' user_id=user.id %}">Remove</a></td>
+
+              </tr>
+            {% endfor %}
+
+          </table>
+        </div>
+
+        <!-- page header and anchor link styled like a button, aligned horizontally -->
+        <div class="footer">
+          <p><a href="{% url 'dashboard1:index' %}">Home</a></p>
+        </div>
+      </body>
+    </html>

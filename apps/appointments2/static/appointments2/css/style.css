@@ -1,0 +1,76 @@
+body{
+  font-family: sans-serif;
+  background: beige;
+}
+
+fieldset{
+  width: 80%;
+  margin-left: 10%;
+  background-color: salmon;
+}
+
+.header{
+  display: inline-block;
+  width: 100%;
+  margin: 15px 0px 15px 15px;
+}
+
+.header a{
+    margin-left: 20%;
+}
+
+.header2 a{
+    margin-left: 20%;
+}
+
+.error_messages li{
+  font-size: 13pt;
+  color: red;
+}
+
+.one_line{
+  display: inline;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+  /*spaces out table columns across the wrapper width*/
+table{
+  /* border-collapse: collapse; */
+  border: 1px solid black;
+  width: 50%;
+}
+
+/* for Add Appointment form data at bottom */
+.task_div{
+    margin: 0px 0px 15px 15px;
+}
+
+.task_table{
+  display: block;
+  margin: 15px 0px 15px 15px;
+}
+
+.task_table a{
+  margin-left: 10%;
+}
+
+.task_table th{
+  background-color: white;
+}
+
+/*zebra striping for table rows*/
+  tbody tr:nth-child(even){
+    background-color: lavender;
+  }
+  tbody tr:nth-child(odd){
+    background-color: lightpink;
+  }
+
+td{
+  padding: 10px 10px 10px 10px;
+}
+
+.update{
+  margin-left: 30%;
+}

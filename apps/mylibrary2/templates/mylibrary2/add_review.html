@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mylibrary2/css/style.css' %}" media="screen" title="no title">
+    <title>Display Book and Review</title>
+  </head>
+
+  <body>
+    <div class="header">
+
+      <div class="one_line">
+        <h1>{{ book.title }}</h1>
+      </div>
+
+      <div class="one_line">
+        <p><a href={% url 'mylibrary2:index' %}>Home</a><a href={% url 'mylibrary1:logout' %}>Logout</a></p>
+      </div>
+
+      <h3>Author: {{ book.author }}</h3>
+
+    <div class="column1">
+      <h2>Reviews:</h2>
+      {% for review in reviews %}
+        <div class = "asterisk">
+          <h6>* * * * *</h6>
+        </div>
+
+        {% if review.rating == 0 %}
+          <h6><span style="font-weight:bold">Rating: </span><img src="{% static 'mylibrary2/images/0.jpg' %}" width="15%" alt="image"></h6>
+        {% elif review.rating == 1 %}
+          <h6><span style="font-weight:bold">Rating: </span><img src="{% static 'mylibrary2/images/1.jpg' %}" width="15%" alt="image"></h6>
+        {% elif review.rating == 2 %}
+          <h6><span style="font-weight:bold">Rating: </span><img src="{% static 'mylibrary2/images/2.jpg' %}" width="15%" alt="image"></h6>
+        {% elif review.rating == 3 %}
+          <h6><span style="font-weight:bold">Rating: </span><img src="{% static 'mylibrary2/images/3.jpg' %}" width="15%" alt="image"></h6>
+        {% elif review.rating == 4 %}
+          <h6><span style="font-weight:bold">Rating: </span><img src="{% static 'mylibrary2/images/4.jpg' %}" width="15%" alt="image"></h6>
+        {% else %} <!-- rating is 5 -->
+          <h6><span style="font-weight:bold">Rating: </span><img src="{% static 'mylibrary2/images/5.jpg' %}" width="15%" alt="image"></h6>
+        {% endif %}
+
+        <h6><span style="font-weight:bold">{{ review.user_link.alias }} says:</span> {{ review.review }}</h6>
+        <h6><span style="font-weight:bold">Posted on: </span>{{ review.created_at.date }}</h6>
+        <h6><a href="{% url 'mylibrary2:delete_review' review_id=review.id %}">{{ delete_review }}</a></h6>
+
+<!-- lets session users delete their own reviews  -->
+      <div class="delete_review">
+        {% if review.user_link.id == request.session.user_id %}
+          <a href="{% url 'mylibrary2:delete_review' review_id=review.id %}">Delete this Review</a>
+          <br>
+        {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+
+    <div class="column2b">
+      <form class = "bookreview" action="{% url 'mylibrary2:add_review' id=book.id %}" method="POST">
+        {% csrf_token %}
+        <h3>Add a Review:</h3>
+        <textarea name = "review" rows="6" cols="50"></textarea></h4>
+        <br>
+        <br>
+        <p>Rating: <select name="rating">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option></p>
+        </select> stars
+        <br>
+        <br>
+        <button class="submit" value="Add">Submit Review</button>
+      </form>
+
+    </div>
+    </fieldset>
+  </body>
+</html>

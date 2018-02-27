@@ -1,0 +1,42 @@
+body{
+  background-color: beige;
+  font-family: sans-serif;
+}
+
+h2{
+  text-decoration: underline;
+  color: purple;
+}
+
+h4{
+  color: purple;
+  text-align: center;
+}
+
+.homelink{
+  margin-top: 35%;
+}
+
+.login_reg{
+  display: inline-block;
+  display: 40%;
+  vertical-align: top;
+}
+
+.miniwrap{
+  display: block;
+  width: 42%;
+  height: auto;
+  background-color: lavender;
+  border: 2px solid red;
+  padding: 20px 10px 20px 20px;
+}
+
+purple{
+  color: purple;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+}

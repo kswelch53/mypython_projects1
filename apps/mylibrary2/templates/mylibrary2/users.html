@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mylibrary2/css/style.css' %}" media="screen" title="no title">
+    <title>User profile</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <p><a href="{% url 'mylibrary2:index' %}">Home</a>
+      <a href="{% url 'mylibrary2:add_book' %}">Add Book and Review</a>
+      <a href="{% url 'mylibrary1:logout' %}">Logout</a></p>
+    </div>
+
+    <div class="mini_div">
+      <h2>User alias: {{ user.alias }}</h2>
+      <h3>Name: <span style="font-weight:lighter">{{ user.name }}</span></h3>
+      <h3>Email: <span style="font-weight:lighter">{{ user.email }}</span></h3>
+      <h3>Total reviews: <span style="font-weight:lighter">{{ count }}</span></h3>
+
+      <h2>Posted reviews on the following books:</h2>
+      <div class = "scrollbar2">
+        <!-- books reviewed is a Review object -->
+        {% for book in books_reviewed %}
+        <p><a href="{% url 'mylibrary2:add_review' id=book.book_link.id %}">{{ book.book_link.title }}</a>, by {{ book.book_link.author }}</p>
+      {% endfor %}
+      </div>
+      </br>
+    </div>
+
+  </body>
+</html>

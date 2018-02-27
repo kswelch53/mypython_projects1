@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app1_landingpage/css/style.css' %}" media="screen" title="no title">
+
+   <title>Github Landing Page</title>
+  </head>
+  <body>
+
+    <fieldset>
+    <legend>LANDING PAGE</legend>
+
+      <div class = "column">
+        <h2>Python projects by Karen S. Welch</h2>
+        <p><a href="{% url 'address_book:index' %}">Address Book</a>Add, edit and delete people from an email address book</p>
+
+        <p><a href="{% url 'amadon_store:index' %}"><u style="color:#ea1e32"><span style="color:#ea1e32">Amadon Store</span></u></a>Purchase items in the Amadon Store</p>
+
+        <p><a href="{% url 'appointments1:index' %}"><u style="color:#6bad90"><span style="color:#6bad90">Appointments</span></u></a>Register/log in; keep track of your appointments</p>
+
+        <p><a href="{% url 'colorful_words:index' %}">C<span style="color:red">o</span><span style="color:green">l</span><span style="color:#7a03c4">o</span><span style="color:#ea841e">r</span>f<span style="color:red">u</span><span style="color:green">l</span> <span style="color:purple">W</span><span style="color:#ea841e">o</span>r<span style="color:red">d</span><span style="color:green">s</span></a>Create words in choices of colors and font size</p>
+
+        <p><a href="{% url 'courses:index' %}"><u style="color:green"><span style="color:green">Courses</span></a></u>View and add to a list of available courses</p>
+
+        <p><a href="{% url 'friends_one:index' %}"><u style="color:#7a03c4"><span style="color:#7a03c4">Friends</span></a></u>Register/log in; add and remove people from a list of friends</p>
+
+        <p><a href="{% url 'mylibrary1:index' %}">My Library</a>Register/log in; add books and reviews, review books added by others; catalogue a personal library and/or create a reading list</p>
+
+        <p><a href="{% url 'ninja_gold:index' %}"><span style="color:red">Pirate-</span><span style="color:#03c40d">Ninja </span><span style="color:#c4a403">Gold</span></a>Look for gold in various locations: farm, cave, house and casino</p>
+
+        <!-- change route to ideas1:index when program is ready  -->
+        <p><a href="{% url 'app1:detour' %}">Playlist</a><span style="color:orangered">** UNDER CONSTRUCTION **</span> Register/log in; add songs to your Playlist</p>
+
+        <p><a href="{% url 'quotes_one:index' %}"><u style="color:#d942f4"><span style="color:#d942f4">Quotes</span></a></u>Register/log in; view famous favorite quotes and list your own favorites</p>
+
+        <p><a href="{% url 'shoes1:index' %}">Shoes</a>Register/log in; buy and sell popular athletic shoes online</p>
+
+        <p><a href="{% url 'time_display:index' %}"><u style="color:#05a4b2"><span style="color:#05a4b2">Time Display</span></a></u>Displays dates and times in six time zones</p>
+
+        <p><a href="{% url 'travelbuddy_one:index' %}"><u style="color:green"><span style="color:green">Travel Buddy</span></a></u>Register/log in; plan a trip and/or join other users' trips</p>
+
+        <p><a href="{% url 'dashboard1:index' %}">User Dashboard</a>Users can register/log in, edit their profiles; administrators can edit user data</p>
+
+        <p><a href="{% url 'wall_one:index' %}"><u style="color:black"><span style="color:black">The Wall</span></a></u>Register/log in; leave messages and post comments on other users' messages</p>
+      </div><!-- end of column div -->
+
+      <div class = "image">
+        <img src="{% static 'app1_landingpage/images/mypython5.jpg' %}" alt="image">
+      </div>
+
+    </fieldset>
+
+  </body>
+</html>

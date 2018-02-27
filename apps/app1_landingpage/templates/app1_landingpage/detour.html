@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app1_landingpage/css/style.css' %}" media="screen" title="no title">
+    <title>Success page</title>
+  </head>
+
+  <body>
+
+    <div class="header">
+      <h1>Project under construction; come back soon</h1>
+      <a href="{% url 'app1:index' %}"><u style="text-decoration-color:orangered;"><span style="color:orangered">Back to Landing Page</u></a>
+    </div>
+
+    <div class="wrapper">
+
+      <div class = "left_image">
+        <img src="{% static 'app1_landingpage/images/detour5_beige.jpg' %}" width="45%" alt="image">
+      </div>
+
+      <div class = "center_image">
+        <img src="{% static 'app1_landingpage/images/detour1_beige.jpg' %}" width="80%" alt="image">
+      </div>
+
+      <div class = "right_image">
+        <img src="{% static 'app1_landingpage/images/detour5_beige.jpg' %}" width="45%" alt="image">
+      </div>
+
+    </div>
+
+  </body>
+</html>

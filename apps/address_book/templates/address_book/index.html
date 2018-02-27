@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'address_book/css/style.css' %}" media="screen" title="no title">
+    <title>Users Index page</title>
+  </head>
+  <body>
+    <!-- <h1>This is index.html</h1> -->
+    <h1>Email Addresses</h1>
+    <div class="wrapper">
+      <table>
+        <thead>
+          <tr>
+            <!-- table headers -->
+            <th>id</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <!-- lists table of user names, email, action links -->
+        <tbody>
+          {% for user in users %}
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.first_name }} {{ user.last_name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.created_at }}</td>
+
+
+              <td><a href="{% url 'address_book:show' user_id=user.id %}">Show</a><a href="{% url 'address_book:edit' user_id=user.id %}">Edit<a href="{% url 'address_book:deletecheck' user_id=user.id %}">Delete</a></td>
+              <!-- links here -->
+
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class ="newline">
+    <!-- link allows user to create a new user -->
+    <p><a href="{% url 'address_book:new' %}">Add a new user</a></p>
+    <p><a href="{% url 'app1:index' %}">Back to Landing Page</a></p>
+    </div>
+
+  </body>
+</html>

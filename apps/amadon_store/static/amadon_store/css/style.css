@@ -1,0 +1,65 @@
+a{
+  color: blue;
+  font-family: sans-serif;
+}
+
+body{
+  background-color: beige;
+}
+
+h2, h4 {
+  font-family: sans-serif;
+}
+
+.miniwrap{
+    display: block;
+    width: 30%;
+    height: auto;
+    background-color: lightblue;
+    border: 5px solid lavender;
+    padding: 0px 0px 20px 20px;
+}
+
+/*div for table items*/
+.orderitems{
+  text-align: left;
+}
+.orderitems th{
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+/*spaces out table columns across the wrapper width*/
+table{
+  border-collapse: collapse;
+  width: 50%;
+}
+/*not sure whether this is necessary*/
+table input{
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/*zebra striping for table rows*/
+tbody tr:nth-child(even){
+  background-color: lavender;
+}
+tbody tr:nth-child(odd){
+  background-color: lightpink;
+}
+
+td{
+    font-family: sans-serif;
+}
+
+thead tr{
+  background-color: lightblue;
+}
+
+.wrapper{
+  display: block;
+}
+
+.wrapper h2{
+  color: purple;
+}

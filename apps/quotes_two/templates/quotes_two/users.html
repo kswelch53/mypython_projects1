@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quotes_two/css/style.css' %}" media="screen" title="no title">
+    <title>Quotes Posted by User</title>
+  </head>
+
+  <body>
+    <div class="miniwrap">
+
+      <div class="header">
+        <a href={% url 'quotes_two:index' %}>Dashboard</a>
+        <a href={% url 'quotes_one:logout' %}>Logout</a>
+
+<!-- not session user; each user whose alias link is clicked on from quotes.html page -->
+        <h2>Posts by {{ user.alias }}</h2>
+        <h2>Count: {{ count }}</h2>
+      </div>
+
+      {% for quote in quotes %}
+        <p>{{ quote.author }}:</p><h4> {{ quote.quote }}</h4>
+      {% endfor %}
+
+    </div> <!-- wrapper end div -->
+
+  </body>
+</html>

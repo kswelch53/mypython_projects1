@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mylibrary3/css/style.css' %}" media="screen" title="no title">
+    <title>Reading List</title>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>MY READING LIST</legend>
+      <div class="one_line">
+        <p><h3>Hello, {{ request.session.user_alias }}! Welcome to your Reading List. Here you can create a list of books you would like to read.
+          You currently have {{ readinglist_count }} {{ item }} in your library.</h3></p>
+        <!-- Fill out message, add a count of Reading List books -->
+      </div>
+
+      <a href="{% url 'mylibrary3:readinglist' %}">{{ readinglist_message }}</a>
+      <a href="{% url 'mylibrary3:add_to_bookshelf' %}">Add to your Bookshelf</a>
+      <a href="{% url 'mylibrary2:index' %}">Home</a>
+
+      <div class = "scrollbar">
+        <h3><span style = "text-decoration:underline">Books on my Reading List:</span></h3>
+        {% for book in user_readinglist %}
+          <p>{{ book.title }}</span>, by {{ book.author }}<a href="{% url 'mylibrary3:remove_readbook' readbook_id=book.id %}"><u style="text-decoration-color: #9eb8e2;"><span style="font-size: 9pt; color: #9eb8e2;">Remove</span></u></a></p>
+        {% endfor %}
+      </div>
+
+    </fieldset>
+  </body>
+</html>

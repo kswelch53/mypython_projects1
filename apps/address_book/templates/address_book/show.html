@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <meta charset="utf-8"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'address_book/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>Users Show page</title>
+  </head>
+  <body>
+    <!-- <h1>This is show.html</h1> -->
+    <div class="miniwrap">
+      <h1>User {{ user.id }}</h1>
+      <h4>Full Name: {{ user.first_name }} {{ user.last_name }}</h4>
+      <h4>Email: {{ user.email }} </h4>
+      <h4>Created at: {{ user.created_at }}</h4>
+      <a href="{% url 'address_book:edit' user_id=user.id %}">Edit </a> | <a href="{% url 'address_book:deletecheck' user_id=user.id %}">Delete</a>
+    </div>
+  </body>
+</html>
