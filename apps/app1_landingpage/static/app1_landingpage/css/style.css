@@ -65,10 +65,13 @@ h2 {
   margin-right: 20%;
 }
 
-
 legend{
   text-align: center;
   font-size: 15pt;
+}
+
+.main_link{
+  padding-left: 15px;
 }
 
 p {
